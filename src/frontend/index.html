@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">✦</div>
+                <span>AI Research</span>
+            </div>
+
+            <button id="new-chat-btn" class="new-chat-btn">
+                <span>＋</span> New Chat
+            </button>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-section="chat-section">
+                    <span>⌂</span> Home
+                </button>
+
+                <button id="pdf-library-btn" class="nav-item"
+                        data-section="pdf-section">
+                    <span>▤</span> PDF Library
+                </button>
+
+                <button id="images-btn" class="nav-item"
+                        data-section="images-section">
+                    <span>▧</span> Images
+                </button>
+
+                <button id="settings-btn" class="nav-item"
+                        data-section="settings-section">
+                    <span>⚙</span> Settings
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="status-indicator"></div>
+                <span>AI Research Assistant</span>
+            </div>
+
+            <div class="account-actions">
+                <button id="login-btn" class="login-button">
+                    <span>↪</span> Login
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content">
+
+            <!-- Chat -->
+            <section id="chat-section" class="chat-section">
+
+                <div class="welcome-area" id="welcome-area">
+                    <div class="welcome-icon">✦</div>
+                    <h1>Your Research Assistant</h1>
+                    <p>How can I help you with your research today?</p>
+                </div>
+
+                <div id="chat-messages" class="chat-messages"></div>
+
+                <!-- Message composer -->
+                <div class="composer-area">
+                    <form id="chat-form" class="composer">
+
+                        <!-- Selected PDF appears inside the composer -->
+                        <div id="selected-pdf" class="selected-pdf"></div>
+
+                        <!-- Question input -->
+                        <input
+                            type="text"
+                            id="question-input"
+                            placeholder="Ask anything about your research..."
+                            autocomplete="off"
+                            required
+                        >
+
+                        <!-- Composer toolbar -->
+                        <div class="composer-toolbar">
+                            <div class="composer-actions">
+                                <button
+                                    type="button"
+                                    id="add-pdf-btn"
+                                    class="icon-button"
+                                    title="Add PDF"
+                                    aria-label="Add PDF"
+                                >＋</button>
+
+                                <span class="composer-hint">
+                                    Add a PDF or ask a question
+                                </span>
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="send-button"
+                                aria-label="Send question"
+                            >↑</button>
+                        </div>
+
+                        <!-- PDF file picker -->
+                        <input
+                            type="file"
+                            id="chat-pdf-upload"
+                            accept=".pdf,application/pdf"
+                            hidden
+                        >
+                    </form>
+
+                    <!-- Suggested prompts -->
+                    <div class="suggestion-chips">
+                        <button
+                            type="button"
+                            class="suggestion-chip"
+                            data-question="Summarize my PDF"
+                        >✧ Summarize</button>
+
+                        <button
+                            type="button"
+                            class="suggestion-chip"
+                            data-question="Explain the key concepts in my PDF"
+                        >◈ Key Concepts</button>
+
+                        <button
+                            type="button"
+                            class="suggestion-chip"
+                            data-question="Find important information in my PDF"
+                        >⌕ Research</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PDF Library -->
+            <section id="pdf-section" class="content-section" hidden>
+                <div class="page-heading">
+                    <h1>PDF Library</h1>
+                    <p>Upload documents to use in your research.</p>
+                </div>
+
+                <div class="upload-box">
+                    <label for="pdf-upload" class="upload-button">
+                        ＋ Choose PDF File
+                    </label>
+
+                    <input
+                        type="file"
+                        id="pdf-upload"
+                        accept=".pdf,application/pdf"
+                        hidden
+                    >
+
+                    <p class="upload-help">
+                        Select a PDF to add it to your research library.
+                    </p>
+                </div>
+
+                <div id="pdf-list"></div>
+            </section>
+
+            <!-- Images -->
+            <section id="images-section" class="content-section" hidden>
+                <div class="page-heading">
+                    <h1>Images</h1>
+                    <p>Upload and preview research images.</p>
+                </div>
+
+                <input
+                    type="file"
+                    id="image-upload"
+                    accept="image/*"
+                    multiple
+                >
+
+                <div id="image-list"></div>
+            </section>
+
+            <!-- Settings -->
+            <section id="settings-section" class="content-section" hidden>
+                <div class="page-heading">
+                    <h1>Settings</h1>
+                    <p>Manage your application preferences.</p>
+                </div>
+
+                <button id="logout-btn">Logout</button>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Logs and databases
+logs/
+*.db
+*.sqlite3
+
+# Uploaded documents and test files
+data/uploads/
+empty.pdf
+fake.pdf
+test_upload.txt
+
+# Local environment files
+.DS_Store
+
+# Local PDF documents
+data/*.pdf

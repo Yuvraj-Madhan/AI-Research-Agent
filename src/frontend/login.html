@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | AI Research Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <main class="login-card">
+        <a href="index.html" class="login-brand">
+            <span class="login-brand-icon">✦</span>
+            AI Research Agent
+        </a>
+
+        <div class="login-heading">
+            <h1>Welcome back</h1>
+            <p>Sign in to continue your research.</p>
+        </div>
+
+        <button id="google-login-btn" class="google-login-btn">
+            <svg width="20" height="20" viewBox="0 0 48 48"
+                 aria-hidden="true">
+                <path fill="#EA4335"
+                    d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.3 0 24 0 14.6 0 6.5 5.4 3 13.2l7.8 6.1C12.7 13.1 17.9 9.5 24 9.5z"
+                    transform="translate(0 5)"/>
+                <path fill="#4285F4"
+                    d="M46.1 24.5c0-1.5-.1-3-.4-4.5H24v9h12.4c-.6 3-2.3 5.5-4.9 7.2l7.5 5.8c4.5-4.2 7.1-10.3 7.1-17.5z"/>
+                <path fill="#FBBC05"
+                    d="M10.8 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.3.8-4.7L3 13.2C1.1 16.6 0 20.2 0 24s1.1 7.4 3 10.8l7.8-6.1z"
+                    transform="translate(0 0)"/>
+                <path fill="#34A853"
+                    d="M24 48c6.3 0 11.6-2.1 15.5-5.9L32 36.3c-2.1 1.4-4.8 2.2-8 2.2-6.1 0-11.3-3.6-13.2-8.8L3 35.8C6.5 43.6 14.6 48 24 48z"/>
+            </svg>
+            Continue with Google
+        </button>
+
+        <p id="login-message" class="login-message">
+            Secure sign-in with your Google account.
+        </p>
+
+        <div class="login-divider">
+            <span>OR</span>
+        </div>
+
+        <a href="index.html" class="back-home">← Back to home</a>
+
+        <p class="login-footer">
+            By continuing, you agree to use this application responsibly.
+        </p>
+    </main>
+
+    
+    <script src="https://accounts.google.com/gsi/client" defer></script>
+    <script src="login.js" defer></script>
+    </body>
+    </html>
+
+</body>
+</html>
