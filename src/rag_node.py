@@ -1,6 +1,6 @@
 
 from src.query_enhancments import rewritten_query, hyde_query
-from src.retrival import retrieve_documents
+from src.retrival import retrieve_documents,format_documents_as_context
 from src.rrf_fusion import rrf_fusion
 from src.reranker import rerank_documents
 from src.generate_answer import generate_answer
@@ -61,26 +61,13 @@ def rag_node(state: dict) -> dict:
             top_k=5,
         )
 
+        # 7. Format the reranked documents with source metadata
+        documents = [
+            result["document"]
+            for result in final_results
+        ]
 
-        
-        # 7. Convert reranked documents into context text
-        context_parts = []
-
-        for result in final_results:
-            document = result["document"]
-
-            page_content = document.page_content
-            page_number = document.metadata.get("page_label", "Unknown")
-            source = document.metadata.get("source", "Unknown")
-
-            context_parts.append(
-                f"Page number: {page_number}\n"
-                f"Source: {source}\n"
-                f"Page content:\n{page_content}"
-            )
-
-        context = "\n\n".join(context_parts)
-
+        context = format_documents_as_context(documents)
 
         # 8. Generate an answer grounded in the retrieved context
         answer = generate_answer(
@@ -94,6 +81,8 @@ def rag_node(state: dict) -> dict:
             "llm_result": answer,
             "query_category": "rag",
         }
+
+
 
     except Exception:
         logger.exception("RAG node failed.")

@@ -50,11 +50,16 @@ def generate_answer(user_query: str, context: str) -> str:
         - Use only the sections that are relevant to the question.
         - For simple factual questions, answer directly without unnecessary sections.
 
-        4. PDF REFERENCES
-        - Include relevant page numbers when they are available in the context.
-        - Tell the user which page to open for more information when possible.
-        - Never guess a page number.
-        - If page information is unavailable, do not fabricate a citation.
+             4. PDF REFERENCES AND CITATIONS
+        - Each context passage may contain a source label, PDF filename,
+          and page number.
+        - Cite supporting claims using the exact source label provided,
+          for example [Source 1, Page 3].
+        - Only use source labels and page numbers that appear in the context.
+        - Place citations immediately after the claims they support.
+        - If multiple sources support a claim, cite each relevant source.
+        - Never invent source labels, filenames, or page numbers.
+        - If no supporting passage is available, explicitly say so.
 
         5. COMPLETENESS
         - Cover the important parts of the question supported by the context.

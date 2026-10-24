@@ -199,7 +199,7 @@ def route_after_research(state: State) -> str:
 # -------------------- CALCULATOR --------------------
 
 def calculator_handler(state: State) -> dict:
-    print("⚠️ Calculator: Calculating price before GST")
+    print("⚠️ Calculator: Calculating ")
     user_query = state["user_query"]
     research_result = state.get("llm_result", "")
 

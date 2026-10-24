@@ -75,3 +75,36 @@ def retrieve_documents(
         raise RuntimeError(
             f"Error retrieving documents from Qdrant: {e}"
         ) from e
+
+from pathlib import Path
+
+
+def format_documents_as_context(documents) -> str:
+    """Format retrieved documents with source and page metadata."""
+
+    context_parts = []
+
+    for i, doc in enumerate(documents, start=1):
+        source = doc.metadata.get("source", "Unknown source")
+        page = doc.metadata.get("page")
+
+        # PyPDFLoader normally stores zero-based page indices.
+        if isinstance(page, int):
+            page_number = page + 1
+        else:
+            page_number = None
+
+        source_name = Path(source).name if source != "Unknown source" else source
+
+        if page_number is not None:
+            citation = (
+                f"[Source {i} | File: {source_name} | Page: {page_number}]"
+            )
+        else:
+            citation = f"[Source {i} | File: {source_name} | Page unavailable]"
+
+        context_parts.append(
+            f"{citation}\n{doc.page_content}"
+        )
+
+    return "\n\n".join(context_parts)
